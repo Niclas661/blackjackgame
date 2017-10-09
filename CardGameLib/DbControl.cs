@@ -32,7 +32,7 @@ namespace CardGameLib
             try
             {
                 DbWriter writer = new DbWriter();
-                var exists = writer.FindPlayer(name);
+                var exists = writer.CheckPlayerExist(name);
                 return exists;
             }
             catch
@@ -41,9 +41,29 @@ namespace CardGameLib
             }
         }
 
-        public string GetPlayerByName(string text)
+        public Player GetPlayerByName(string text)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DbWriter writer = new DbWriter();
+                var exists = writer.ReturnPlayer(text);
+                if(exists.Name != null)
+                {
+                    return new Player()
+                    {
+                        Name = exists.Name,
+                        Money = exists.Money
+                    };
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public int GetPlayerIdByName(string text)
@@ -53,7 +73,23 @@ namespace CardGameLib
 
         public int GetPlayerMoneyByName(string text)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DbWriter writer = new DbWriter();
+                var exists = writer.ReturnPlayer(text);
+                if (exists.Name != null)
+                {
+                    return exists.Money;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch
+            {
+                return -1;
+            }
         }
     }
 }

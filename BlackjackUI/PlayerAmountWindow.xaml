@@ -1,0 +1,20 @@
+﻿<Window x:Class="BlackjackUI.PlayerAmountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlackjackUI"
+        mc:Ignorable="d"
+        Title="PlayerAmountWindow" Height="274.576" Width="194.491">
+    <Grid>
+        <TextBox x:Name="txtNumOfPlayers" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" Text="4" VerticalAlignment="Top" Width="108" Loaded="txtNumOfPlayers_Loaded"/>
+        <Label x:Name="lblNumOfPlayers" Content="Number of players" HorizontalAlignment="Left" Margin="39,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnLoadP1" Content="Load player 1" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="79" Height="56" Click="btnLoadP1_Click"/>
+        <Button x:Name="btnLoadP2" Content="Load player 2" HorizontalAlignment="Left" Margin="94,70,0,0" VerticalAlignment="Top" Width="79" Height="56" Click="btnLoadP2_Click"/>
+        <Button x:Name="btnLoadP3" Content="Load player 3" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top" Width="79" Height="56" Click="btnLoadP3_Click"/>
+        <Button x:Name="btnLoadP4" Content="Load player 4" HorizontalAlignment="Left" Margin="94,131,0,0" VerticalAlignment="Top" Width="79" Height="56" Click="btnLoadP4_Click"/>
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="54,214,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnSet" Content="Set" HorizontalAlignment="Left" Margin="123,36,0,0" VerticalAlignment="Top" Width="50" Height="23" Click="btnSet_Click"/>
+
+    </Grid>
+</Window>

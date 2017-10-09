@@ -219,5 +219,15 @@ namespace CardGameLib
             }
             return playersWL;
         }
+
+        /// <summary>
+        /// Replace the player at that "seat" with a new player
+        /// </summary>
+        /// <param name="index">Index</param>
+        /// <param name="p">New player object</param>
+        public void ReplacePlayer(int index, Player p)
+        {
+            players[index] = p;
+        }
     }
 }

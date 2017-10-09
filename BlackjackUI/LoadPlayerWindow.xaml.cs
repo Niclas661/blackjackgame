@@ -20,12 +20,16 @@ namespace BlackjackUI
     /// </summary>
     public partial class LoadPlayerWindow : Window
     {
+        public MainWindow AppMainWindow { get; set; }
+
         public Player p = new Player();
+        int index;
         bool playerLoaded = false;
 
-        public LoadPlayerWindow()
+        public LoadPlayerWindow(int index)
         {
             InitializeComponent();
+            this.index = index;
         }
          private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
@@ -52,7 +56,7 @@ namespace BlackjackUI
                 DbControl dbController = new DbControl();
                 if (dbController.CheckPlayerExists(txtPlayerNameInput.Text))
                 {
-                    p.Name = dbController.GetPlayerByName(txtPlayerNameInput.Text);
+                    p.Name = dbController.GetPlayerByName(txtPlayerNameInput.Text).Name;
                     p.Money = dbController.GetPlayerMoneyByName(txtPlayerNameInput.Text);
                     playerLoaded = true;
                 }
@@ -67,6 +71,12 @@ namespace BlackjackUI
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
 
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            var myW = Owner as PlayerAmountWindow;
+            myW.AddPlayer (index, p);
         }
         //HOW DO WE REPRESENT PLAYERS? HOW DO WE LOAD THEM IN? HOW DO WE CREATE NEW ONES?
         //IN GUI

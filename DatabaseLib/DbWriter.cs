@@ -39,7 +39,7 @@ namespace DatabaseLib
                 return gplayer.ID;
             }
         }
-        public bool FindPlayer(string name)
+        public bool CheckPlayerExist(string name)
         {
             using (var db = new BlackjackDBContext())
             {
@@ -51,6 +51,21 @@ namespace DatabaseLib
                 else
                 {
                     return false;
+                }
+            }
+        }
+        public GamePlayer ReturnPlayer(string name)
+        {
+            using (var db = new BlackjackDBContext())
+            {
+                var player = db.players.First(a => a.Name.ToLower() == name.ToLower());
+                if (player != null)
+                {
+                    return player;
+                }
+                else
+                {
+                    return new GamePlayer();
                 }
             }
         }

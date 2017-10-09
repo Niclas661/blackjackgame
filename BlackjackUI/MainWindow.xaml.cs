@@ -541,9 +541,40 @@ namespace BlackjackUI
 
         private void btnBetLoadPlayer1_Click(object sender, RoutedEventArgs e)
         {
-            LoadPlayerWindow lpWindow = new LoadPlayerWindow();
-            lpWindow.Show();
+            LoadPlayerWindow(0);
+        }
 
+        private void LoadPlayerWindow(int index)
+        {
+            LoadPlayerWindow lpWindow = new LoadPlayerWindow(index);
+            lpWindow.Owner = this;
+            lpWindow.ShowDialog();
+        }
+
+        public void LoadPlayer(Player p, int index)
+        {
+            currentGame.ReplacePlayer(index, p);
+        }
+
+        private void btnBetLoadPlayer2_Click(object sender, RoutedEventArgs e)
+        {
+            LoadPlayerWindow(1);
+        }
+
+        private void btnBetLoadPlayer3_Click(object sender, RoutedEventArgs e)
+        {
+            LoadPlayerWindow(2);
+        }
+
+        private void btnBetLoadPlayer4_Click(object sender, RoutedEventArgs e)
+        {
+            LoadPlayerWindow(3);
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            PlayerAmountWindow paWindow = new PlayerAmountWindow();
+            paWindow.ShowDialog();
         }
     }
 }
