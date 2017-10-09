@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackjackUI", "BlackjackUI\BlackjackUI.csproj", "{E5090F9B-DF3D-466A-ABAB-994155E29BF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardGameLib", "CardGameLib\CardGameLib.csproj", "{0A7E6985-9B74-446C-A097-575632BBED84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseLib", "DatabaseLib\DatabaseLib.csproj", "{B3AF8297-B44B-4C9B-9505-2F3A5E665EE1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E5090F9B-DF3D-466A-ABAB-994155E29BF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5090F9B-DF3D-466A-ABAB-994155E29BF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5090F9B-DF3D-466A-ABAB-994155E29BF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5090F9B-DF3D-466A-ABAB-994155E29BF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A7E6985-9B74-446C-A097-575632BBED84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A7E6985-9B74-446C-A097-575632BBED84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A7E6985-9B74-446C-A097-575632BBED84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A7E6985-9B74-446C-A097-575632BBED84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3AF8297-B44B-4C9B-9505-2F3A5E665EE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3AF8297-B44B-4C9B-9505-2F3A5E665EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3AF8297-B44B-4C9B-9505-2F3A5E665EE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3AF8297-B44B-4C9B-9505-2F3A5E665EE1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

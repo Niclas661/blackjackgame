@@ -1,0 +1,17 @@
+﻿<Window x:Class="BlackjackUI.LoadPlayerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlackjackUI"
+        mc:Ignorable="d"
+        Title="LoadPlayerWindow" Height="272" Width="343">
+    <Grid>
+        <Button x:Name="btnCreate" Content="Create new player" HorizontalAlignment="Left" Margin="13,40,0,0" VerticalAlignment="Top" Width="152" Height="45" Click="btnCreate_Click"/>
+        <Button x:Name="btnLoad" Content="Load player" HorizontalAlignment="Left" Margin="170,40,0,0" VerticalAlignment="Top" Width="152" Height="45" Click="btnLoad_Click"/>
+        <Label x:Name="label" Content="PLAYERNAME" Margin="13,99,13,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <Button x:Name="btnClose" Content="Close" Margin="130,201,130,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Money" Margin="130,149,130,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <TextBox x:Name="txtPlayerNameInput" HorizontalAlignment="Left" Height="23" Margin="13,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Text="Player name..."/>
+    </Grid>
+</Window>
