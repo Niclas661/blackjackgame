@@ -5,13 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlackjackUI"
         mc:Ignorable="d"
-        Title="LoadPlayerWindow" Height="272" Width="343">
+        Title="LoadPlayerWindow" Height="367.625" Width="689.375">
     <Grid>
-        <Button x:Name="btnCreate" Content="Create new player" HorizontalAlignment="Left" Margin="13,40,0,0" VerticalAlignment="Top" Width="152" Height="45" Click="btnCreate_Click"/>
-        <Button x:Name="btnLoad" Content="Load player" HorizontalAlignment="Left" Margin="170,40,0,0" VerticalAlignment="Top" Width="152" Height="45" Click="btnLoad_Click"/>
-        <Label x:Name="lblPlayerName" Content="PLAYERNAME" Margin="13,99,13,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
-        <Button x:Name="btnClose" Content="Close" Margin="130,201,130,0" VerticalAlignment="Top" Click="btnClose_Click"/>
-        <Label x:Name="lblMoney" Content="Money" Margin="130,149,130,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
-        <TextBox x:Name="txtPlayerNameInput" HorizontalAlignment="Left" Height="23" Margin="13,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Text="Player name..."/>
+        <Button x:Name="btnCreateP1" Content="Create new player" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="102" Height="45"/>
+        <Button x:Name="btnLoadP1" Content="Load player" HorizontalAlignment="Left" Margin="115,61,0,0" VerticalAlignment="Top" Width="102" Height="45"/>
+        <Button x:Name="btnClose" Content="Close" Margin="130,307,130,0" VerticalAlignment="Top" Click="btnClose_Click"/>
+        <TextBox x:Name="txtPlayer1NameInput" HorizontalAlignment="Left" Height="23" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" Text="Player name..."/>
+        <Label x:Name="lblP1" Content="Player 1" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnCreateP2" Content="Create new player" HorizontalAlignment="Left" Margin="222,61,0,0" VerticalAlignment="Top" Width="102" Height="45"/>
+        <Button x:Name="btnLoadP2" Content="Load player" HorizontalAlignment="Left" Margin="327,61,0,0" VerticalAlignment="Top" Width="102" Height="45"/>
+        <TextBox x:Name="txtPlayer2NameInput" HorizontalAlignment="Left" Height="23" Margin="222,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" Text="Player name..."/>
+        <Label x:Name="lblP2" Content="Player 2" HorizontalAlignment="Left" Margin="222,5,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnCreateP3" Content="Create new player" HorizontalAlignment="Left" Margin="434,61,0,0" VerticalAlignment="Top" Width="102" Height="45"/>
+        <Button x:Name="btnLoadP3" Content="Load player" HorizontalAlignment="Left" Margin="539,61,0,0" VerticalAlignment="Top" Width="102" Height="45"/>
+        <TextBox x:Name="txtPlayer3NameInput" HorizontalAlignment="Left" Height="23" Margin="434,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" Text="Player name..."/>
+        <Label x:Name="lblP3" Content="Player 3" HorizontalAlignment="Left" Margin="434,5,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnCreateP4" Content="Create new player" HorizontalAlignment="Left" Margin="10,167,0,0" VerticalAlignment="Top" Width="102" Height="45"/>
+        <Button x:Name="btnLoadP4" Content="Load player" HorizontalAlignment="Left" Margin="115,167,0,0" VerticalAlignment="Top" Width="102" Height="45"/>
+        <TextBox x:Name="txtPlayer4NameInput" HorizontalAlignment="Left" Height="23" Margin="10,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" Text="Player name..."/>
+        <Label x:Name="lblP4" Content="Player 4" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cmbDecks" HorizontalAlignment="Left" Margin="392,167,0,0" VerticalAlignment="Top" Width="144" SelectedIndex="0" SelectionChanged="cmbDecks_SelectionChanged">
+            <ComboBoxItem Content="1 deck"/>
+            <ComboBoxItem Content="2 decks"/>
+            <ComboBoxItem Content="3 decks"/>
+            <ComboBoxItem Content="4 decks"/>
+        </ComboBox>
+        <ComboBox x:Name="cmbPlayers" HorizontalAlignment="Left" Margin="267,167,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" SelectionChanged="cmbPlayers_SelectionChanged">
+            <ComboBoxItem Content="1 player"/>
+            <ComboBoxItem Content="2 players"/>
+            <ComboBoxItem Content="3 players"/>
+            <ComboBoxItem Content="4 players"/>
+        </ComboBox>
     </Grid>
 </Window>

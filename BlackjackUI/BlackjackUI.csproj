@@ -96,17 +96,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PlayerAmountWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NewGameWindow.xaml.cs">
       <DependentUpon>NewGameWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PlayerAmountWindow.xaml.cs">
-      <DependentUpon>PlayerAmountWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -134,16 +127,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CardGameLib\CardGameLib.csproj">
-      <Project>{0a7e6985-9b74-446c-a097-575632bbed84}</Project>
-      <Name>CardGameLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DatabaseLib\DatabaseLib.csproj">
-      <Project>{b3af8297-b44b-4c9b-9505-2f3a5e665ee1}</Project>
-      <Name>DatabaseLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\b1fh.png" />
@@ -345,6 +328,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\sq.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CardGameLib\CardGameLib.csproj">
+      <Project>{0a7e6985-9b74-446c-a097-575632bbed84}</Project>
+      <Name>CardGameLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseLib\DatabaseLib.csproj">
+      <Project>{b3af8297-b44b-4c9b-9505-2f3a5e665ee1}</Project>
+      <Name>DatabaseLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

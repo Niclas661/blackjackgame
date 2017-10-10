@@ -25,11 +25,15 @@ namespace BlackjackUI
         Game currentGame;
         int playerTurnIndex = 0;
         bool gameOver = true;
+
+        //this list has to be dynamic in its size, even if it means certain items in the list is new
         List<Player> players = new List<Player>();
 
         public MainWindow()
         {
             InitializeComponent();
+
+            currentGame = new Game();
         }
 
         /// <summary>
@@ -81,11 +85,13 @@ namespace BlackjackUI
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
-            if(gameOver)
-                InitializeGame();
+            //we need to read the players list and decks and create a game from here
         }
         private void InitializeGame()
         {
+            //this is where we set up the gui and run the game
+
+            /*
             gameOver = false;
             lblDealerScore.Content = "DEALER";
             //int players = cmbPlayers.SelectedIndex + 1;
@@ -114,7 +120,14 @@ namespace BlackjackUI
             }
             UpdateDealerHand(0);
             UpdatePlayerTurnText();
+            */
         }
+
+        private void SetupGame()
+        {
+
+        }
+
         private void ReinitializeGame()
         {
             playerTurnIndex = 0;
@@ -443,43 +456,7 @@ namespace BlackjackUI
             btnPlay.IsEnabled = true;
             gameOver = true;
 
-            if (currentGame.DealerInfo().Bust)
-            {
-                MessageBox.Show("Dealer went bust!");
-            }
-
-            WinCondition[] scoreboard = currentGame.PlayersWon();
-            string winMsg = "";
-            string tieMsg = "";
-            bool noWin = true;
-            bool noTie = true;
-            for(int i = 0; i < scoreboard.Length; i++)
-            {
-                if(scoreboard[i] == WinCondition.WIN)
-                {
-                    noWin = false;
-                    winMsg += "Player " + (i+1) + " ";
-                }
-                if (scoreboard[i] == WinCondition.TIE)
-                {
-                    noTie = false;
-                    tieMsg += "Player " + (i+1) + " ";
-                }
-            }
-            if (noWin)
-            {
-                winMsg += "Dealer wins!";
-            }
-            else
-            {
-                winMsg += "wins!";
-            }
-            if (!noTie)
-            {
-                tieMsg += "ties with the dealer.";
-            }
-
-            MessageBox.Show(winMsg + " " + tieMsg);
+            
 
         }
 
@@ -532,22 +509,72 @@ namespace BlackjackUI
         {
             if (gameOver)
             {
-                currentGame = null;
+                currentGame = new Game(cmbDecks.SelectedIndex+1, players);
+                UpdatePlayerLoadButtons(cmbPlayers.SelectedIndex+1);
             }
+
+        }
+
+        private void btnBetLoadPlayer1_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        
+
+        public void LoadPlayer(Player p, int index)
+        {
+            //this means a list of players already exist! how is that possible?
+            //we also assume a game object exists
+            currentGame.ReplacePlayer(index, p);
+        }
+
+        private void btnBetLoadPlayer2_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void btnBetLoadPlayer3_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void btnBetLoadPlayer4_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            LoadPlayerWindow lpWindow = new LoadPlayerWindow();
+            lpWindow.Owner = this;
+            bool? valid = lpWindow.ShowDialog();
+            if(valid ?? false)
+            {
+                return;
+            }
+            else
+            {
+
+            }
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+        }
+
+        private void UpdatePlayerLoadButtons(int numOfPlayers)
+        {
             #region btns
             btnBetLoadPlayer1.IsEnabled = false;
             btnBetLoadPlayer2.IsEnabled = false;
             btnBetLoadPlayer3.IsEnabled = false;
             btnBetLoadPlayer4.IsEnabled = false;
 
-            if(cmbPlayers.SelectedIndex == 0)
+            if (numOfPlayers == 1)
             {
                 btnBetLoadPlayer1.IsEnabled = true;
 
                 players = new List<Player>();
                 players.Add(new Player());
             }
-            if (cmbPlayers.SelectedIndex == 1)
+            if (numOfPlayers == 2)
             {
                 btnBetLoadPlayer1.IsEnabled = true;
                 btnBetLoadPlayer2.IsEnabled = true;
@@ -556,7 +583,7 @@ namespace BlackjackUI
                 players.Add(new Player());
                 players.Add(new Player());
             }
-            if (cmbPlayers.SelectedIndex == 2)
+            if (numOfPlayers == 3)
             {
                 btnBetLoadPlayer1.IsEnabled = true;
                 btnBetLoadPlayer2.IsEnabled = true;
@@ -568,7 +595,7 @@ namespace BlackjackUI
                 players.Add(new Player());
 
             }
-            if (cmbPlayers.SelectedIndex == 3)
+            if (numOfPlayers == 4)
             {
                 btnBetLoadPlayer1.IsEnabled = true;
                 btnBetLoadPlayer2.IsEnabled = true;
@@ -582,75 +609,6 @@ namespace BlackjackUI
                 players.Add(new Player());
             }
             #endregion btns
-
-
-        }
-
-        private void btnBetLoadPlayer1_Click(object sender, RoutedEventArgs e)
-        {
-            LoadPlayerWindow(0);
-        }
-
-        private void LoadPlayerWindow(int index)
-        {
-            LoadPlayerWindow lpWindow = new LoadPlayerWindow(index);
-            lpWindow.Owner = this;
-            bool? valid = lpWindow.ShowDialog();
-            if (valid == true)
-            {
-                LoadPlayer(lpWindow.p, index);
-                Game g = new Game(cmbDecks.SelectedIndex+1, players);
-
-                for(int i = 0; i < g.PlayerCount; i++)
-                {
-                    MessageBox.Show(g.PlayerInfo(i).ToString());
-                }
-            }
-        }
-
-        public void LoadPlayer(Player p, int index)
-        {
-            currentGame.ReplacePlayer(index, p);
-        }
-
-        private void btnBetLoadPlayer2_Click(object sender, RoutedEventArgs e)
-        {
-            LoadPlayerWindow(1);
-        }
-
-        private void btnBetLoadPlayer3_Click(object sender, RoutedEventArgs e)
-        {
-            LoadPlayerWindow(2);
-        }
-
-        private void btnBetLoadPlayer4_Click(object sender, RoutedEventArgs e)
-        {
-            LoadPlayerWindow(3);
-        }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            PlayerAmountWindow paWindow = new PlayerAmountWindow();
-            paWindow.Owner = this;
-            bool? valid = paWindow.ShowDialog();
-            if(valid ?? false)
-            {
-                return;
-            }
-            else
-            {
-                List<Player> loadedPlayers = paWindow.players;
-                Game g = new Game(cmbDecks.SelectedIndex + 1, loadedPlayers);
-                for (int i = 0; i < g.PlayerCount; i++)
-                {
-                    MessageBox.Show("Player " + (i + 1) + ": Name=" + g.PlayerInfo(i).Name);
-                }
-            }
-        }
-
-        private void Window_Initialized(object sender, EventArgs e)
-        {
-            int a = 0;
         }
     }
 }

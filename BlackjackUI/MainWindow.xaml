@@ -16,14 +16,14 @@
                 <ComboBoxItem Content="3 decks"/>
                 <ComboBoxItem Content="4 decks"/>
             </ComboBox>
-            <ComboBox x:Name="cmbPlayers" HorizontalAlignment="Left" Margin="117,12,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" SelectionChanged="cmbPlayers_SelectionChanged">
+            <ComboBox x:Name="cmbPlayers" HorizontalAlignment="Left" Margin="117,12,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cmbPlayers_SelectionChanged">
                 <ComboBoxItem Content="1 player"/>
                 <ComboBoxItem Content="2 players"/>
                 <ComboBoxItem Content="3 players"/>
                 <ComboBoxItem Content="4 players"/>
             </ComboBox>
             <Button x:Name="btnReshuffle" Content="Reshuffle" Margin="447,12,0,0" HorizontalAlignment="Left" Width="75" Height="22" VerticalAlignment="Top" Click="btnReshuffle_Click" IsEnabled="False"/>
-            <Button x:Name="btnLoadPlayers" Content="Load Players" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Width="102" Click="button_Click"/>
+            <Button x:Name="btnLoadPlayers" Content="Create game" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Width="102" Click="button_Click"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="145" Margin="10,59,0,0" VerticalAlignment="Top" Width="750" RenderTransformOrigin="0.54,0.117">
             <Button x:Name="btnHit" Content="Hit" HorizontalAlignment="Left" Margin="665,10,0,0" VerticalAlignment="Top" Width="75" Click="btnHit_Click" IsEnabled="False"/>

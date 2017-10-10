@@ -61,6 +61,13 @@ namespace CardGameLib
             StartGame();
 
         }
+
+        public Game()
+        {
+
+        }
+
+
         /// <summary>
         /// Reshuffle the deck
         /// </summary>
