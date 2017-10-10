@@ -100,9 +100,9 @@ namespace BlackjackUI
         }
         private void OpenPlayerWindow(int index)
         {
-            LoadPlayerWindow lpWindow = new LoadPlayerWindow(0);
+            LoadPlayerWindow lpWindow = new LoadPlayerWindow(index);
             lpWindow.Owner = this;
-            lpWindow.ShowDialog();
+            bool? valid = lpWindow.ShowDialog();
         }
         public void AddPlayer(int index, Player p)
         {
@@ -122,6 +122,11 @@ namespace BlackjackUI
         private void btnLoadP4_Click(object sender, RoutedEventArgs e)
         {
             OpenPlayerWindow(3);
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
         }
     }
 }

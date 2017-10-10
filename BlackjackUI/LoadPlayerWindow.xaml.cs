@@ -30,23 +30,26 @@ namespace BlackjackUI
         {
             InitializeComponent();
             this.index = index;
+            
+            MessageBox.Show(Owner.Name);
         }
          private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             if(txtPlayerNameInput.Text != null)
             {
                 DbControl dbController = new DbControl();
-                if (dbController.CheckPlayerExists(txtPlayerNameInput.Text))
+                if (!dbController.CheckPlayerExists(txtPlayerNameInput.Text))
                 {
                     dbController.AddPlayer(txtPlayerNameInput.Text);
+                    MessageBox.Show("Player added");
                     playerLoaded = true;
                 }
-
+                else
+                {
+                    MessageBox.Show("This player name is already taken!");
+                }
             }
-            else
-            {
-                MessageBox.Show("This player name is already taken!");
-            }
+            
         }
 
         private void btnLoad_Click(object sender, RoutedEventArgs e)
@@ -58,6 +61,9 @@ namespace BlackjackUI
                 {
                     p.Name = dbController.GetPlayerByName(txtPlayerNameInput.Text).Name;
                     p.Money = dbController.GetPlayerMoneyByName(txtPlayerNameInput.Text);
+                    MessageBox.Show("Player loaded");
+                    lblPlayerName.Content = p.Name;
+                    lblMoney.Content = "$" + p.Money.ToString();
                     playerLoaded = true;
                 }
 
@@ -75,8 +81,19 @@ namespace BlackjackUI
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            var myW = Owner as PlayerAmountWindow;
-            myW.AddPlayer (index, p);
+            
+            if (playerLoaded)
+            {
+                //myW.AddPlayer(index, p);
+                DialogResult = true;
+            }
+            else
+            {
+                DialogResult = false;
+            }
+            
+           
+            //Close();
         }
         //HOW DO WE REPRESENT PLAYERS? HOW DO WE LOAD THEM IN? HOW DO WE CREATE NEW ONES?
         //IN GUI

@@ -32,7 +32,7 @@ namespace DatabaseLib
             {
                 GamePlayer gplayer = new GamePlayer();
                 gplayer.Money = 1000;
-
+                gplayer.Name = playerName;
                 db.players.Add(gplayer);
                 db.SaveChanges();
 

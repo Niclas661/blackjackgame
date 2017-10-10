@@ -25,11 +25,11 @@ namespace BlackjackUI
         Game currentGame;
         int playerTurnIndex = 0;
         bool gameOver = true;
+        List<Player> players = new List<Player>();
 
         public MainWindow()
         {
             InitializeComponent();
-            
         }
 
         /// <summary>
@@ -88,13 +88,10 @@ namespace BlackjackUI
         {
             gameOver = false;
             lblDealerScore.Content = "DEALER";
-            int players = cmbPlayers.SelectedIndex + 1;
+            //int players = cmbPlayers.SelectedIndex + 1;
             int decks = cmbDecks.SelectedIndex + 1;
-            List<Player> playerList = new List<Player>();
-            for (int x = 0; x < players; x++)
-            {
-                playerList.Add(new Player());
-            }
+            List<Player> playerList = players;
+
             if(currentGame == null)
             {
                 Game g = new Game(decks, playerList);
@@ -537,6 +534,56 @@ namespace BlackjackUI
             {
                 currentGame = null;
             }
+            #region btns
+            btnBetLoadPlayer1.IsEnabled = false;
+            btnBetLoadPlayer2.IsEnabled = false;
+            btnBetLoadPlayer3.IsEnabled = false;
+            btnBetLoadPlayer4.IsEnabled = false;
+
+            if(cmbPlayers.SelectedIndex == 0)
+            {
+                btnBetLoadPlayer1.IsEnabled = true;
+
+                players = new List<Player>();
+                players.Add(new Player());
+            }
+            if (cmbPlayers.SelectedIndex == 1)
+            {
+                btnBetLoadPlayer1.IsEnabled = true;
+                btnBetLoadPlayer2.IsEnabled = true;
+
+                players = new List<Player>();
+                players.Add(new Player());
+                players.Add(new Player());
+            }
+            if (cmbPlayers.SelectedIndex == 2)
+            {
+                btnBetLoadPlayer1.IsEnabled = true;
+                btnBetLoadPlayer2.IsEnabled = true;
+                btnBetLoadPlayer3.IsEnabled = true;
+
+                players = new List<Player>();
+                players.Add(new Player());
+                players.Add(new Player());
+                players.Add(new Player());
+
+            }
+            if (cmbPlayers.SelectedIndex == 3)
+            {
+                btnBetLoadPlayer1.IsEnabled = true;
+                btnBetLoadPlayer2.IsEnabled = true;
+                btnBetLoadPlayer3.IsEnabled = true;
+                btnBetLoadPlayer4.IsEnabled = true;
+
+                players = new List<Player>();
+                players.Add(new Player());
+                players.Add(new Player());
+                players.Add(new Player());
+                players.Add(new Player());
+            }
+            #endregion btns
+
+
         }
 
         private void btnBetLoadPlayer1_Click(object sender, RoutedEventArgs e)
@@ -548,7 +595,17 @@ namespace BlackjackUI
         {
             LoadPlayerWindow lpWindow = new LoadPlayerWindow(index);
             lpWindow.Owner = this;
-            lpWindow.ShowDialog();
+            bool? valid = lpWindow.ShowDialog();
+            if (valid == true)
+            {
+                LoadPlayer(lpWindow.p, index);
+                Game g = new Game(cmbDecks.SelectedIndex+1, players);
+
+                for(int i = 0; i < g.PlayerCount; i++)
+                {
+                    MessageBox.Show(g.PlayerInfo(i).ToString());
+                }
+            }
         }
 
         public void LoadPlayer(Player p, int index)
@@ -574,7 +631,26 @@ namespace BlackjackUI
         private void button_Click(object sender, RoutedEventArgs e)
         {
             PlayerAmountWindow paWindow = new PlayerAmountWindow();
-            paWindow.ShowDialog();
+            paWindow.Owner = this;
+            bool? valid = paWindow.ShowDialog();
+            if(valid ?? false)
+            {
+                return;
+            }
+            else
+            {
+                List<Player> loadedPlayers = paWindow.players;
+                Game g = new Game(cmbDecks.SelectedIndex + 1, loadedPlayers);
+                for (int i = 0; i < g.PlayerCount; i++)
+                {
+                    MessageBox.Show("Player " + (i + 1) + ": Name=" + g.PlayerInfo(i).Name);
+                }
+            }
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            int a = 0;
         }
     }
 }

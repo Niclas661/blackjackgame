@@ -9,9 +9,9 @@
     <Grid>
         <Button x:Name="btnCreate" Content="Create new player" HorizontalAlignment="Left" Margin="13,40,0,0" VerticalAlignment="Top" Width="152" Height="45" Click="btnCreate_Click"/>
         <Button x:Name="btnLoad" Content="Load player" HorizontalAlignment="Left" Margin="170,40,0,0" VerticalAlignment="Top" Width="152" Height="45" Click="btnLoad_Click"/>
-        <Label x:Name="label" Content="PLAYERNAME" Margin="13,99,13,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <Label x:Name="lblPlayerName" Content="PLAYERNAME" Margin="13,99,13,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
         <Button x:Name="btnClose" Content="Close" Margin="130,201,130,0" VerticalAlignment="Top" Click="btnClose_Click"/>
-        <Label x:Name="label1" Content="Money" Margin="130,149,130,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <Label x:Name="lblMoney" Content="Money" Margin="130,149,130,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
         <TextBox x:Name="txtPlayerNameInput" HorizontalAlignment="Left" Height="23" Margin="13,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Text="Player name..."/>
     </Grid>
 </Window>
