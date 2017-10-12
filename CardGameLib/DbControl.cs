@@ -4,15 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DatabaseLib;
+using System.Diagnostics;
 
 namespace CardGameLib
 {
+    /// <summary>
+    /// Niclas Svensson
+    /// 2017-10-11
+    /// 
+    /// DbControl is a class on the Game's side that can communicate with another interface on DatabaseLib
+    /// </summary>
     public class DbControl
     {
         public DbControl()
         {
 
         }
+        /// <summary>
+        /// Add a player to the database
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public string AddPlayer(string name)
         {
             try
@@ -26,7 +38,28 @@ namespace CardGameLib
                 return e.Message;
             }
         }
-
+        /// <summary>
+        /// Update a player's money
+        /// </summary>
+        /// <param name="player"></param>
+        public void UpdatePlayer(Player player)
+        {
+            try
+            {
+                DbWriter writer = new DbWriter();
+                writer.UpdatePlayerMoney(player.Name, player.Money);
+            }
+            catch
+            {
+                Debug.Write("Could not write");
+                return;
+            }
+        }
+        /// <summary>
+        /// Return either true or false if a player with a chosen name exists in the database
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public bool CheckPlayerExists(string name)
         {
             try
@@ -40,7 +73,11 @@ namespace CardGameLib
                 return false;
             }
         }
-
+        /// <summary>
+        /// Return a player from the database with that name
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public Player GetPlayerByName(string text)
         {
             try
@@ -65,12 +102,11 @@ namespace CardGameLib
                 return null;
             }
         }
-
-        public int GetPlayerIdByName(string text)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Return a player's money
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public int GetPlayerMoneyByName(string text)
         {
             try

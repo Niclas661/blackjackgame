@@ -5,25 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlackjackUI"
         mc:Ignorable="d"
-        Title="Niclas' Blackjack Game" Height="478" Width="776.333" ResizeMode="NoResize" Initialized="Window_Initialized">
+        Title="Niclas' Blackjack Game" Height="478" Width="776.333" ResizeMode="NoResize">
     <Grid>
         <Grid Height="44" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="750">
-            <Button x:Name="btnPlay" Content="Play" Margin="367,12,0,0" HorizontalAlignment="Left" Width="75" Height="22" VerticalAlignment="Top" Click="btnPlay_Click"/>
+            <Button x:Name="btnPlay" Content="Play" Margin="354,12,0,0" HorizontalAlignment="Left" Width="75" Height="22" VerticalAlignment="Top" Click="btnPlay_Click"/>
             <Label x:Name="lblTitle" Content="Niclas Blackjack Game" HorizontalAlignment="Left" Margin="605,12,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS"/>
-            <ComboBox x:Name="cmbDecks" HorizontalAlignment="Left" Margin="242,12,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" SelectionChanged="cmbDecks_SelectionChanged">
-                <ComboBoxItem Content="1 deck"/>
-                <ComboBoxItem Content="2 decks"/>
-                <ComboBoxItem Content="3 decks"/>
-                <ComboBoxItem Content="4 decks"/>
-            </ComboBox>
-            <ComboBox x:Name="cmbPlayers" HorizontalAlignment="Left" Margin="117,12,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cmbPlayers_SelectionChanged">
-                <ComboBoxItem Content="1 player"/>
-                <ComboBoxItem Content="2 players"/>
-                <ComboBoxItem Content="3 players"/>
-                <ComboBoxItem Content="4 players"/>
-            </ComboBox>
-            <Button x:Name="btnReshuffle" Content="Reshuffle" Margin="447,12,0,0" HorizontalAlignment="Left" Width="75" Height="22" VerticalAlignment="Top" Click="btnReshuffle_Click" IsEnabled="False"/>
-            <Button x:Name="btnLoadPlayers" Content="Create game" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Width="102" Click="button_Click"/>
+            <Button x:Name="btnReshuffle" Content="Reshuffle" Margin="434,12,0,0" HorizontalAlignment="Left" Width="75" Height="22" VerticalAlignment="Top" Click="btnReshuffle_Click" IsEnabled="False"/>
+            <Button x:Name="btnLoadPlayers" Content="Create game" HorizontalAlignment="Left" Margin="247,13,0,0" VerticalAlignment="Top" Width="102" Click="btnLoadPlayers_Click"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="145" Margin="10,59,0,0" VerticalAlignment="Top" Width="750" RenderTransformOrigin="0.54,0.117">
             <Button x:Name="btnHit" Content="Hit" HorizontalAlignment="Left" Margin="665,10,0,0" VerticalAlignment="Top" Width="75" Click="btnHit_Click" IsEnabled="False"/>
@@ -61,10 +49,6 @@
             <Image x:Name="p24" HorizontalAlignment="Left" Height="100" Margin="241,10,0,0" VerticalAlignment="Top" Width="74" Source="Resources/b1fv.png"/>
             <Image x:Name="p34" HorizontalAlignment="Left" Height="100" Margin="420,10,0,0" VerticalAlignment="Top" Width="74" Source="Resources/b1fv.png"/>
             <Image x:Name="p44" HorizontalAlignment="Left" Height="100" Margin="601,10,0,0" VerticalAlignment="Top" Width="74" Source="Resources/b1fv.png"/>
-            <Button x:Name="btnBetLoadPlayer1" Content="Load player / BET" HorizontalAlignment="Left" Margin="9,171,0,0" VerticalAlignment="Top" Width="129" Click="btnBetLoadPlayer1_Click"/>
-            <Button x:Name="btnBetLoadPlayer2" Content="Load player / BET" HorizontalAlignment="Left" Margin="187,171,0,0" VerticalAlignment="Top" Width="129" Click="btnBetLoadPlayer2_Click"/>
-            <Button x:Name="btnBetLoadPlayer3" Content="Load player / BET" HorizontalAlignment="Left" Margin="365,171,0,0" VerticalAlignment="Top" Width="129" Click="btnBetLoadPlayer3_Click"/>
-            <Button x:Name="btnBetLoadPlayer4" Content="Load player / BET" HorizontalAlignment="Left" Margin="547,171,0,0" VerticalAlignment="Top" Width="129" Click="btnBetLoadPlayer4_Click"/>
             <Label x:Name="lblPlayer1Name" Content="PLAYERNAME ($0)" HorizontalAlignment="Center" Margin="10,114,587,0" VerticalAlignment="Top" Width="153" HorizontalContentAlignment="Center"/>
             <Label x:Name="lblPlayer2Name" Content="PLAYERNAME ($0)" HorizontalAlignment="Center" Margin="187,114,410,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="153"/>
             <Label x:Name="lblPlayer3Name" Content="PLAYERNAME ($0)" HorizontalAlignment="Center" Margin="366,114,231,0" VerticalAlignment="Top" Width="153" HorizontalContentAlignment="Center"/>

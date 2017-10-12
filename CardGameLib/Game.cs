@@ -20,7 +20,7 @@ namespace CardGameLib
     /// </summary>
     public class Game
     {
-        List<Player> players = null;
+        List<Player> players;
         Dealer dealer = new Dealer();
         int decks = 0;
 
@@ -188,7 +188,7 @@ namespace CardGameLib
         {
             for(int i = 0; i < PlayerCount; i++)
             {
-                players[i] = new Player();
+                players[i].Reset();
             }
             dealer = new Dealer();
             StartGame();

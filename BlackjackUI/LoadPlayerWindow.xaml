@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlackjackUI"
         mc:Ignorable="d"
-        Title="LoadPlayerWindow" Height="367.625" Width="689.375">
+        Title="LoadPlayerWindow" Height="367.625" Width="689.375" Initialized="Window_Initialized">
     <Grid>
         <Button x:Name="btnCreateP1" Content="Create new player" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="102" Height="45"/>
         <Button x:Name="btnLoadP1" Content="Load player" HorizontalAlignment="Left" Margin="115,61,0,0" VerticalAlignment="Top" Width="102" Height="45"/>
@@ -24,7 +24,7 @@
         <Button x:Name="btnLoadP4" Content="Load player" HorizontalAlignment="Left" Margin="115,167,0,0" VerticalAlignment="Top" Width="102" Height="45"/>
         <TextBox x:Name="txtPlayer4NameInput" HorizontalAlignment="Left" Height="23" Margin="10,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" Text="Player name..."/>
         <Label x:Name="lblP4" Content="Player 4" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cmbDecks" HorizontalAlignment="Left" Margin="392,167,0,0" VerticalAlignment="Top" Width="144" SelectedIndex="0" SelectionChanged="cmbDecks_SelectionChanged">
+        <ComboBox x:Name="cmbDecks" HorizontalAlignment="Left" Margin="392,167,0,0" VerticalAlignment="Top" Width="144" SelectedIndex="0">
             <ComboBoxItem Content="1 deck"/>
             <ComboBoxItem Content="2 decks"/>
             <ComboBoxItem Content="3 decks"/>

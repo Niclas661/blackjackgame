@@ -21,12 +21,13 @@ namespace BlackjackUI
     public partial class LoadPlayerWindow : Window
     {
         public MainWindow AppMainWindow { get; set; }
-        public int decks { get; set; }
-
-        public Player p = new Player();
+        public int decks { get; set; } = 1;
         bool playerLoaded = false;
         public List<Player> playerList;
 
+        /// <summary>
+        /// Have buttons subscribe to these events for less code
+        /// </summary>
         public LoadPlayerWindow()
         {
             InitializeComponent();
@@ -41,6 +42,11 @@ namespace BlackjackUI
             btnLoadP3.Click += btnLoad_Click;
             btnLoadP4.Click += btnLoad_Click;
         }
+        /// <summary>
+        /// Create a player object and add it both to the database and the playerlist to be used in the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
          private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
@@ -54,8 +60,10 @@ namespace BlackjackUI
                         {
                             dbController.AddPlayer(txtPlayer1NameInput.Text);
                             MessageBox.Show("Player added");
+                            Player p = new Player();
                             p = dbController.GetPlayerByName(txtPlayer1NameInput.Text);
                             playerList[0] = p;
+                            MessageBox.Show(p.Name + " loaded");
                         }
                         else
                         {
@@ -71,8 +79,10 @@ namespace BlackjackUI
                         {
                             dbController.AddPlayer(txtPlayer2NameInput.Text);
                             MessageBox.Show("Player added");
+                            Player p = new Player();
                             p = dbController.GetPlayerByName(txtPlayer2NameInput.Text);
                             playerList[1] = p;
+                            MessageBox.Show(p.Name + " loaded");
                         }
                         else
                         {
@@ -88,8 +98,10 @@ namespace BlackjackUI
                         {
                             dbController.AddPlayer(txtPlayer3NameInput.Text);
                             MessageBox.Show("Player added");
+                            Player p = new Player();
                             p = dbController.GetPlayerByName(txtPlayer3NameInput.Text);
                             playerList[2] = p;
+                            MessageBox.Show(p.Name + " loaded");
                         }
                         else
                         {
@@ -105,8 +117,10 @@ namespace BlackjackUI
                         {
                             dbController.AddPlayer(txtPlayer4NameInput.Text);
                             MessageBox.Show("Player added");
+                            Player p = new Player();
                             p = dbController.GetPlayerByName(txtPlayer4NameInput.Text);
                             playerList[3] = p;
+                            MessageBox.Show(p.Name + " loaded");
                         }
                         else
                         {
@@ -117,7 +131,11 @@ namespace BlackjackUI
             }
             CheckNullPlayers();
         }
-
+        /// <summary>
+        /// Find a player from the database and load it to the player list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
@@ -129,9 +147,10 @@ namespace BlackjackUI
                         DbControl dbController = new DbControl();
                         if (dbController.CheckPlayerExists(txtPlayer1NameInput.Text))
                         {
+                            Player p = new Player();
                             p.Name = dbController.GetPlayerByName(txtPlayer1NameInput.Text).Name;
                             p.Money = dbController.GetPlayerMoneyByName(txtPlayer1NameInput.Text);
-                            MessageBox.Show("Player loaded");
+                            MessageBox.Show(p.Name + " loaded");
                             playerList[0] = p;
                             playerLoaded = true;
                         }
@@ -148,9 +167,10 @@ namespace BlackjackUI
                         DbControl dbController = new DbControl();
                         if (dbController.CheckPlayerExists(txtPlayer2NameInput.Text))
                         {
+                            Player p = new Player();
                             p.Name = dbController.GetPlayerByName(txtPlayer2NameInput.Text).Name;
                             p.Money = dbController.GetPlayerMoneyByName(txtPlayer2NameInput.Text);
-                            MessageBox.Show("Player loaded");
+                            MessageBox.Show(p.Name + " loaded");
                             playerList[1] = p;
                             playerLoaded = true;
                         }
@@ -167,9 +187,10 @@ namespace BlackjackUI
                         DbControl dbController = new DbControl();
                         if (dbController.CheckPlayerExists(txtPlayer3NameInput.Text))
                         {
+                            Player p = new Player();
                             p.Name = dbController.GetPlayerByName(txtPlayer3NameInput.Text).Name;
                             p.Money = dbController.GetPlayerMoneyByName(txtPlayer3NameInput.Text);
-                            MessageBox.Show("Player loaded");
+                            MessageBox.Show(p.Name + " loaded");
                             playerList[2] = p;
                             playerLoaded = true;
                         }
@@ -186,9 +207,10 @@ namespace BlackjackUI
                         DbControl dbController = new DbControl();
                         if (dbController.CheckPlayerExists(txtPlayer4NameInput.Text))
                         {
+                            Player p = new Player();
                             p.Name = dbController.GetPlayerByName(txtPlayer4NameInput.Text).Name;
                             p.Money = dbController.GetPlayerMoneyByName(txtPlayer4NameInput.Text);
-                            MessageBox.Show("Player loaded");
+                            MessageBox.Show(p.Name + " loaded");
                             playerList[3] = p;
                             playerLoaded = true;
                         }
@@ -207,7 +229,9 @@ namespace BlackjackUI
         {
 
         }
-
+        /// <summary>
+        /// If a player spot is null, disable close button
+        /// </summary>
         private void CheckNullPlayers()
         {
             btnClose.IsEnabled = true;
@@ -219,12 +243,21 @@ namespace BlackjackUI
                 }
             }
         }
-
+        /// <summary>
+        /// Set dialogresult
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             
             if (playerLoaded)
             {
+                for (int i = 0; i < playerList.Count; i++)
+                {
+                    MessageBox.Show(playerList[i].Name);
+                }
+
                 //myW.AddPlayer(index, p);
                 DialogResult = true;
             }
@@ -236,19 +269,22 @@ namespace BlackjackUI
            
             //Close();
         }
-
-        private void cmbDecks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        /// <summary>
+        /// Setup so that cmbDecks corresponds with integer decks
+        /// </summary>
+        private void SetupDecksComboBox()
         {
-            /*
-            if(cmbDecks != null)
+            if (cmbDecks != null)
             {
                 decks = cmbDecks.SelectedIndex + 1;
                 CheckNullPlayers();
             }
-            */
-            
         }
-
+        /// <summary>
+        /// Display/hide player buttons and boxes for how many players are chosen to play
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbPlayers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch (cmbPlayers.SelectedIndex)
@@ -317,6 +353,24 @@ namespace BlackjackUI
                     break;
             }
             CheckNullPlayers();
+        }
+        /// <summary>
+        /// cmbDecks bind event when the window is finished
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            cmbDecks.SelectionChanged += cmbDecks_SelectionChanged;
+        }
+        /// <summary>
+        /// Call method to setup decks combobox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmbDecks_SelectionChanged(object sender, EventArgs e)
+        {
+            SetupDecksComboBox();
         }
         //HOW DO WE REPRESENT PLAYERS? HOW DO WE LOAD THEM IN? HOW DO WE CREATE NEW ONES?
         //IN GUI
