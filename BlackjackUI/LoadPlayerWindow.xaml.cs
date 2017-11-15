@@ -253,10 +253,6 @@ namespace BlackjackUI
             
             if (playerLoaded)
             {
-                for (int i = 0; i < playerList.Count; i++)
-                {
-                    MessageBox.Show(playerList[i].Name);
-                }
 
                 //myW.AddPlayer(index, p);
                 DialogResult = true;
